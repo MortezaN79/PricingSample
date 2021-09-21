@@ -1,0 +1,198 @@
+ul {
+    list-style-type: none;
+}
+li::before {
+    font-family: sans-serif;
+    content: "✔";
+    color: white;
+    display: inline-block;
+    width: 1em;
+    background: grey;
+    padding-left: 0.2rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+h1,h2{
+    color: var(--bold--color);
+    font-weight: bold;
+}
+h3 {
+    color: var(--bold--color);
+}
+h4,h6 {
+    color: var(--grey--color);
+}
+
+:root {
+    --primary--color:rgb(124,1,232);
+    --secondary--color: white;
+    --bold--color:rgb(27,17,74);
+    --light--color:rgb(255,210,197);
+    --grey--color:rgb(184,182,192);
+}
+.main-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/*Header-Styles*/
+.header {
+    width: 60%;
+}
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.buttons {
+align-self: center
+}
+#range-bar {
+    border-radius: 8px;
+    height: 4px;
+    width: 100%;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+input[type='range']::-webkit-slider-thumb{
+    width:12px;
+    -webkit-appearance: none;
+    height: 12px;
+    background: var(--grey--color);
+    border-radius: 100%;
+}
+
+/* Plans-Styles */
+.plans-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.plan {
+    border: 2px grey solid;
+    border-radius: 10%;
+    margin: 0 2rem;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    animation: rotateInUpLeft;
+    animation-duration: 1.4s;
+}
+.plan:hover{
+    transform: scale(1.1);
+    transition: transform 300ms linear;
+    background-color: var(--primary--color);
+    color: var(--light--color);
+}
+.plan:hover *{
+    color: var(--light--color);
+}
+.plan-price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.price {
+    margin-right: 1rem;
+}
+
+.plan:hover button {
+    color: var(--primary--color);
+}
+.btn{
+    background: var(--secondary--color);
+    color: var(--primary--color);
+}
+.btn:focus , .btn:hover{
+    background: var(--light--color);
+    color: var(--primary--color);
+}
+
+/*Media-Query for mobile*/
+@media screen and (max-width: 500px){
+    .header {
+        display: none;
+    }
+    .plans-container {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .plan {
+        margin: 2rem 5rem;
+        align-self: center;
+    }
+}
+
+/* Switch-Button*/
+.switch-button {
+    background: var(--secondary--color);
+    border-radius: 30px;
+    border: 1px solid var(--grey--color);
+    overflow: hidden;
+    width: 240px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--light--color);
+    position: relative;
+    padding-right: 120px;
+}
+.switch-button:before {
+    content: "Yearly";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    pointer-events: none;
+}
+.switch-button-checkbox {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+}
+.switch-button-checkbox:checked + .switch-button-label:before {
+    transform: translateX(120px);
+    transition: transform 300ms linear;
+}
+.switch-button-checkbox + .switch-button-label {
+    position: relative;
+    padding: 15px 0;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+}
+.switch-button-checkbox + .switch-button-label:before {
+    content: "";
+    background: var(--primary--color);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 30px;
+    transform: translateX(0);
+    transition: transform 300ms;
+}
+.switch-button-checkbox + .switch-button-label .switch-button-label-span {
+    position: relative;
+}
+
